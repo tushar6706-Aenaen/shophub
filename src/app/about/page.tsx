@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { Users, Target, Award, Heart } from 'lucide-react';
+import { Users, Award, Heart } from 'lucide-react';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function About() {
   const teamMembers = [
@@ -41,7 +41,7 @@ export default function About() {
     },
     {
       title: "Customer Focus",
-      description: "Your satisfaction is our top priority. We're here to help you find the perfect audio solution.",
+      description: "Your satisfaction is our top priority. We&apos;re here to help you find the perfect audio solution.",
       icon: Heart
     },
     {
@@ -61,7 +61,7 @@ export default function About() {
             About Our Company
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            We're a team of passionate individuals dedicated to creating
+            We&apos;re a team of passionate individuals dedicated to creating
             innovative solutions that make a difference.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function About() {
                 cutting-edge tools that drive growth and success.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                With a focus on excellence and customer satisfaction, we're committed
+                With a focus on excellence and customer satisfaction, we&apos;re committed
                 to delivering solutions that exceed expectations and create lasting impact.
               </p>
             </div>
@@ -174,7 +174,7 @@ export default function About() {
             Ready to Start Your Project?
           </h2>
           <p className="text-gray-300 text-lg mb-8">
-            Let's work together to bring your vision to life.
+            Let&apos;s work together to bring your vision to life.
           </p>
           <button className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors mr-4">
             Get in Touch

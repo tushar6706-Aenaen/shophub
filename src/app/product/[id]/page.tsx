@@ -1,8 +1,9 @@
 "use client"
 
-import { use } from "react"
-import { Star } from "lucide-react"
+import { use, useState } from 'react'
+import { Star } from 'lucide-react'
 import { AddToCartButton } from "@/app/product/[id]/add-to-cart-button"
+import Image from 'next/image'
 
 type Product = {
     id: string
@@ -40,31 +41,40 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         ]
     }
 
+    const [selectedImage, setSelectedImage] = useState(0)
+
     return (
         <div className="min-h-screen bg-gray-900 py-12 px-4">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Product Images */}
                     <div className="space-y-4">
-                        <div className="aspect-square rounded-lg bg-gray-800 overflow-hidden">
-                            <img
-                                src={product.images[0]}
+                        <div className="relative aspect-square rounded-lg overflow-hidden">
+                            <Image
+                                src={product.images[selectedImage]}
                                 alt={product.name}
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                             />
                         </div>
                         <div className="grid grid-cols-3 gap-4">
                             {product.images.map((image, index) => (
-                                <div
+                                <button
                                     key={index}
-                                    className="aspect-square rounded-lg bg-gray-800 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
+                                    onClick={() => setSelectedImage(index)}
+                                    className={`relative aspect-square rounded-lg overflow-hidden ${
+                                        selectedImage === index ? 'ring-2 ring-purple-500' : ''
+                                    }`}
                                 >
-                                    <img
+                                    <Image
                                         src={image}
-                                        alt={`${product.name} ${index + 1}`}
-                                        className="w-full h-full object-cover"
+                                        alt={`${product.name} - Image ${index + 1}`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 33vw, 16vw"
                                     />
-                                </div>
+                                </button>
                             ))}
                         </div>
                     </div>
