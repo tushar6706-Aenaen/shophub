@@ -1,14 +1,25 @@
 "use client"
 
 import { use } from "react"
-import { Star, ShoppingCart, Heart, Share2 } from "lucide-react"
-import { AddToCartButton } from "./add-to-cart-button"
+import { Star } from "lucide-react"
+import { AddToCartButton } from "@/app/product/[id]/add-to-cart-button"
+
+type Product = {
+    id: string
+    name: string
+    price: number
+    description: string
+    rating: number
+    reviews: number
+    images: string[]
+    features: string[]
+}
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params)
 
     // Mock product data
-    const product = {
+    const product: Product = {
         id: id,
         name: "Premium Wireless Headphones",
         price: 299.99,

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Users, Target, Award, Heart } from 'lucide-react';
 import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function About() {
   const teamMembers = [
@@ -34,24 +35,19 @@ export default function About() {
 
   const values = [
     {
-      icon: <Target className="w-8 h-8 text-indigo-400" />,
-      title: 'Innovation',
-      description: 'Pushing boundaries and embracing new technologies'
+      title: "Quality First",
+      description: "We never compromise on the quality of our products, ensuring the best experience for our customers.",
+      icon: Award
     },
     {
-      icon: <Users className="w-8 h-8 text-indigo-400" />,
-      title: 'Collaboration',
-      description: 'Working together to achieve extraordinary results'
+      title: "Customer Focus",
+      description: "Your satisfaction is our top priority. We're here to help you find the perfect audio solution.",
+      icon: Heart
     },
     {
-      icon: <Award className="w-8 h-8 text-indigo-400" />,
-      title: 'Excellence',
-      description: 'Committed to delivering the highest quality in everything we do'
-    },
-    {
-      icon: <Heart className="w-8 h-8 text-indigo-400" />,
-      title: 'Passion',
-      description: 'Driven by our love for creating amazing experiences'
+      title: "Community Driven",
+      description: "We value our community and actively seek feedback to improve our products and services.",
+      icon: Users
     }
   ];
 
@@ -102,20 +98,17 @@ export default function About() {
           <h2 className="text-3xl font-bold text-white text-center mb-12">
             Our Core Values
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-6 md:grid-cols-3">
             {values.map((value, index) => (
-              <div
-                key={index}
-                className="bg-gray-900 p-6 rounded-xl hover:bg-gray-800 transition-colors"
-              >
-                <div className="mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-gray-400">
-                  {value.description}
-                </p>
-              </div>
+              <Card key={index} className="border-gray-800 bg-gray-800">
+                <CardHeader>
+                  <value.icon className="mb-4 h-12 w-12 text-purple-500" />
+                  <CardTitle>{value.title}</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    {value.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
         </div>

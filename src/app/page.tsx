@@ -1,95 +1,98 @@
 'use client';
 
-import { ArrowRight, ShoppingBag, Truck, Shield, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight, Headphones, Music, Smartphone } from 'lucide-react';
+
+const features = [
+    {
+        title: "Premium Sound Quality",
+        description: "Experience crystal clear audio with our high-fidelity headphones",
+        icon: Headphones
+    },
+    {
+        title: "Wireless Freedom",
+        description: "Enjoy seamless connectivity with advanced Bluetooth technology",
+        icon: Music
+    },
+    {
+        title: "Smart Controls",
+        description: "Intuitive touch controls for easy music and call management",
+        icon: Smartphone
+    }
+]
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Welcome to <span className="text-indigo-400">ShopHub</span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Your one-stop destination for all your shopping needs. Discover amazing products at unbeatable prices.
-            </p>
-            <Link 
-              href="/product/1"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors"
-            >
-              Shop Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+    return (
+        <div className="flex min-h-screen flex-col">
+            {/* Hero Section */}
+            <section className="flex-1 bg-gradient-to-b from-gray-900 to-gray-800">
+                <div className="container mx-auto px-4 py-16">
+                    <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+                        <div className="flex flex-col justify-center space-y-4">
+                            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                                Experience Music Like Never Before
+                            </h1>
+                            <p className="text-gray-300 md:text-xl">
+                                Discover our premium collection of wireless headphones designed for the ultimate listening experience.
+                            </p>
+                            <div className="flex flex-col gap-4 sm:flex-row">
+                                <Button asChild size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+                                    <Link href="/products">
+                                        Shop Now
+                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                                <Button asChild variant="outline" size="lg">
+                                    <Link href="/about">Learn More</Link>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="relative h-[400px] rounded-lg bg-gray-800">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <Headphones className="h-32 w-32 text-gray-600" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      {/* Features Section */}
-      <section className="py-16 px-4 bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-6 rounded-lg bg-gray-700">
-              <ShoppingBag className="h-8 w-8 text-indigo-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Wide Selection</h3>
-              <p className="text-gray-300">Browse through thousands of products across various categories.</p>
-            </div>
-            <div className="p-6 rounded-lg bg-gray-700">
-              <Truck className="h-8 w-8 text-indigo-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Fast Delivery</h3>
-              <p className="text-gray-300">Get your orders delivered quickly and reliably.</p>
-            </div>
-            <div className="p-6 rounded-lg bg-gray-700">
-              <Shield className="h-8 w-8 text-indigo-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Secure Shopping</h3>
-              <p className="text-gray-300">Shop with confidence with our secure payment system.</p>
-            </div>
-            <div className="p-6 rounded-lg bg-gray-700">
-              <RefreshCw className="h-8 w-8 text-indigo-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Easy Returns</h3>
-              <p className="text-gray-300">Hassle-free returns and exchanges process.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Features Section */}
+            <section className="bg-gray-900 py-16">
+                <div className="container mx-auto px-4">
+                    <h2 className="mb-8 text-center text-3xl font-bold">Why Choose Us</h2>
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        {features.map((feature, index) => (
+                            <Card key={index} className="border-gray-800 bg-gray-800">
+                                <CardHeader>
+                                    <feature.icon className="mb-4 h-12 w-12 text-purple-500" />
+                                    <CardTitle>{feature.title}</CardTitle>
+                                    <CardDescription className="text-gray-400">
+                                        {feature.description}
+                                    </CardDescription>
+                                </CardHeader>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-      {/* Categories Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Shop by Category</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/product/1" className="group">
-              <div className="relative rounded-lg overflow-hidden bg-gray-800 aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 p-6">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-indigo-400 transition-colors">Electronics</h3>
-                  <p className="text-gray-300">Latest gadgets and devices</p>
+            {/* CTA Section */}
+            <section className="bg-gray-800 py-16">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="mb-4 text-3xl font-bold">Ready to Upgrade Your Audio Experience?</h2>
+                    <p className="mb-8 text-gray-300">
+                        Join thousands of satisfied customers who have transformed their listening experience.
+                    </p>
+                    <Button asChild size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+                        <Link href="/products">
+                            Shop Now
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                    </Button>
                 </div>
-              </div>
-            </Link>
-            <Link href="/product/1" className="group">
-              <div className="relative rounded-lg overflow-hidden bg-gray-800 aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 p-6">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-indigo-400 transition-colors">Fashion</h3>
-                  <p className="text-gray-300">Trendy clothing and accessories</p>
-                </div>
-              </div>
-            </Link>
-            <Link href="/product/1" className="group">
-              <div className="relative rounded-lg overflow-hidden bg-gray-800 aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 p-6">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-indigo-400 transition-colors">Home & Living</h3>
-                  <p className="text-gray-300">Everything for your home</p>
-                </div>
-              </div>
-            </Link>
-          </div>
+            </section>
         </div>
-      </section>
-    </main>
-  );
+    );
 }

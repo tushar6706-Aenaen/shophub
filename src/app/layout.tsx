@@ -1,51 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar";
-import { Providers } from "./providers";
-import { ClerkProvider } from "@clerk/nextjs";
-import Footer from "./components/footer";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { CartProvider } from "@/context/CartContext";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ShopHub - Your One-Stop Shop",
-  description: "Find the best products at the best prices",
+  title: "Premium Audio Store",
+  description: "Your one-stop shop for premium audio equipment",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <ClerkProvider>
     <html lang="en">
-      <body
-        suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white min-h-screen flex flex-col`}
-        >
-        <Providers>
-          <header>
+      <body className={inter.className}>
+        <CartProvider>
+          <div className="flex min-h-screen flex-col">
             <Navbar />
-          </header>
-          <main className="flex-grow">
-            {children}
-          </main>
-          <footer>
+            <main className="flex-1 bg-gray-900">{children}</main>
             <Footer />
-          </footer>
-        </Providers>
+          </div>
+        </CartProvider>
       </body>
-    </html> 
-          </ClerkProvider>
-    
+    </html>
   );
 }
