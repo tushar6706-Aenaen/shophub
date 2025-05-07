@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import { Providers } from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import Footer from "./components/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,6 +39,9 @@ export default function RootLayout({
           <main className="flex-grow">
             {children}
           </main>
+          <footer>
+            <Footer />
+          </footer>
         </Providers>
       </body>
     </html> 

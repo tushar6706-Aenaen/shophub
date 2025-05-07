@@ -2,12 +2,12 @@
 
 import { Card } from "@/components/ui/card"
 import { SearchBar } from "@/components/SearchBar"
-import { useCart } from "@/context/CartContext"
+
 import { Button } from "@/components/ui/button"
-import { ShoppingCart } from "lucide-react"
+
 
 export default function ProductLayout({children}: {children : React.ReactNode}){
-    const { totalItems, totalPrice } = useCart()
+    
 
     const handleSearch = (query: string) => {
         // Implement search functionality

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { SearchBar } from "@/components/SearchBar";
-import { ShoppingCart, User, Users } from "lucide-react";
+import { ShoppingCart, Users } from "lucide-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import { useUser } from "@clerk/nextjs";
 

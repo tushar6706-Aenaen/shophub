@@ -2,10 +2,9 @@
 
 import Image from 'next/image';
 import { Users, Target, Award, Heart } from 'lucide-react';
-import {useRouter} from 'next/navigation'
+import Link from 'next/link';
 
 export default function About() {
-  const router = useRouter();
   const teamMembers = [
     {
       name: 'Sarah Johnson',
@@ -188,9 +187,9 @@ export default function About() {
             Get in Touch
           </button>
             
-          <button onClick={()=>router.push('/')} className="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors">
+          <Link href="/" className="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition-colors">
             Go to Home
-          </button>
+          </Link>
         </div>
       </section>
     </div>
